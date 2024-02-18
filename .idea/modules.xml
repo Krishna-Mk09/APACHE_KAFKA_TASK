@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/APACHE_KAFKA_TASK.iml" filepath="$PROJECT_DIR$/.idea/APACHE_KAFKA_TASK.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Consumer_Service_One/Consumer_Service_One.iml" filepath="$PROJECT_DIR$/Consumer_Service_One/Consumer_Service_One.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Producer_Service/Producer_Service.iml" filepath="$PROJECT_DIR$/Producer_Service/Producer_Service.iml" />
+    </modules>
+  </component>
+</project>
