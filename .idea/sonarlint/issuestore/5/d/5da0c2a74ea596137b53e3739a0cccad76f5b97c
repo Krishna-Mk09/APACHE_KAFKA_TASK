@@ -1,3 +1,12 @@
 
-Y
-java:S6353"<Use concise character class syntax '\\d' instead of '[0-9]'.(§½¡ì8ï–ÁêÛ1
+m
+java:S1128"PRemove this unused import 'org.springframework.web.bind.annotation.PostMapping'.(×©Œì8ºã¾ßİ1
+c
+java:S1128"ARemove this unused import 'jakarta.validation.constraints.Email'.(Öï¤Âıÿÿÿÿ8í¿ßİ1
+f
+java:S1128"DRemove this unused import 'jakarta.validation.constraints.NotBlank'.(ÕØ¡Õøÿÿÿÿ8í¿ßİ1
+e
+java:S1128	"CRemove this unused import 'jakarta.validation.constraints.Pattern'.(Îá˜ãúÿÿÿÿ8í¿ßİ1
+]
+java:S1128
+"@Remove this unused import 'jakarta.validation.constraints.Size'.(çÀ…Í8í¿ßİ1

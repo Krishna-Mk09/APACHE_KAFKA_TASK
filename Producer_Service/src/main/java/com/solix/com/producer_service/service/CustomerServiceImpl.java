@@ -1,5 +1,6 @@
 package com.solix.com.producer_service.service;
-
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.solix.com.producer_service.configuration.Constants;
 import com.solix.com.producer_service.domain.Customer;
 import com.solix.com.producer_service.repository.CustomerRepository;
@@ -16,11 +17,13 @@ import java.util.List;
  */
 @Service
 public class CustomerServiceImpl implements CustomerService {
+    private final ObjectMapper objectMapper;
     private final KafkaTemplate<String, String> kafkaTemplate;
     private final CustomerRepository customerRepository;
 
     @Autowired
-    public CustomerServiceImpl(KafkaTemplate<String, String> kafkaTemplate, CustomerRepository customerRepository) {
+    public CustomerServiceImpl(ObjectMapper objectMapper, KafkaTemplate<String, String> kafkaTemplate, CustomerRepository customerRepository) {
+        this.objectMapper = objectMapper;
         this.kafkaTemplate = kafkaTemplate;
         this.customerRepository = customerRepository;
     }
@@ -36,11 +39,16 @@ public class CustomerServiceImpl implements CustomerService {
     public String addCustomers(List<Customer> customers) {
         if (!customers.isEmpty()) {
             for (Customer customer : customers) {
-                kafkaTemplate.send(Constants.Topic, customer.toString());
-                System.out.println("Published successfully");
+                try {
+                    String jsonCustomer = objectMapper.writeValueAsString(customer);
+                    kafkaTemplate.send(Constants.Topic, jsonCustomer);
+                    System.out.println("Published customer successfully: " + customer.getCustomerId());
+                } catch (JsonProcessingException e) {
+                    System.err.println("Error serializing customer: " + e.getMessage());
+                }
             }
         }
-        return "Customers added successfully to Queue ";
+        return "Customers added successfully to Kafka topic";
     }
 
 
@@ -50,23 +58,5 @@ public class CustomerServiceImpl implements CustomerService {
         return "Customer added successfully";
     }
 
-    @Override
-    public String updateCustomer(Customer customer) {
-        return null;
-    }
 
-    @Override
-    public String deleteCustomer(int customerId) {
-        return null;
-    }
-
-    @Override
-    public Customer getCustomer(int customerId) {
-        return null;
-    }
-
-    @Override
-    public List<Customer> getAllCustomers() {
-        return null;
-    }
 }

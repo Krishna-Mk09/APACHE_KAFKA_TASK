@@ -11,7 +11,7 @@ package com.solix.com.producer_service.configuration;
  * These fields include topic names, group IDs, and host addresses.
  */
 public class Constants {
-    public static final String Topic = "customers";
-    public static final String GroupId = "group_customer";
+    public static final String Topic = "producerservice";
+    public static final String GroupId = "group_producer";
     public static final String Host = "localhost:9092";
 }

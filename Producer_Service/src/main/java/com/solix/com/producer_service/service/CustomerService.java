@@ -1,7 +1,11 @@
 package com.solix.com.producer_service.service;
 
 import com.solix.com.producer_service.domain.Customer;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.util.List;
 
 /*
@@ -14,11 +18,5 @@ public interface CustomerService {
 
     public String addCustomer(Customer customer);
 
-    public String updateCustomer(Customer customer);
 
-    public String deleteCustomer(int customerId);
-
-    public Customer getCustomer(int customerId);
-
-    public List<Customer> getAllCustomers();
 }
