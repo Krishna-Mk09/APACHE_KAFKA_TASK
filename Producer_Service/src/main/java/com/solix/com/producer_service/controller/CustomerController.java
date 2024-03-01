@@ -31,7 +31,7 @@ public class CustomerController {
      * @return response entity.
      */
     @PostMapping(value = "/add", consumes = "application/json")
-    public ResponseEntity<?> save(@RequestBody Customer customer) {
+    public ResponseEntity<Customer> save(@RequestBody Customer customer) {
         return new ResponseEntity(this.customerService.addCustomer(customer), HttpStatus.CREATED);
     }
 
@@ -45,10 +45,5 @@ public class CustomerController {
     public ResponseEntity<?> sendTableDataToKafka() {
         String result = customerService.sendTableDataToKafka();
         return new ResponseEntity<>(result, HttpStatus.OK);
-    }
-
-    @PostMapping(value = "/addCustomers", consumes = "application/json")
-    public ResponseEntity<?> save(@RequestBody List<Customer> customers) {
-        return new ResponseEntity(this.customerService.addCustomers(customers), HttpStatus.CREATED);
     }
 }

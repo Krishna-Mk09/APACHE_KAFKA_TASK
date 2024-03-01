@@ -1,9 +1,0 @@
-
-G	java:S106"+Replace this use of System.out by a logger.(Ü©á8æÙÖŒŞ1
-L	java:S106"+Replace this use of System.out by a logger.(şá£óıÿÿÿÿ8çÙÖŒŞ1
-p
-java:S6201!"NReplace this instanceof check and cast with 'instanceof JSONObject jsonObject'(û¶ˆœùÿÿÿÿ8¡×ŒŞ1
-j
-java:S6201%"HReplace this instanceof check and cast with 'instanceof String strValue'(èåúşÿÿÿÿ8êÙÖŒŞ1
-h
-java:S6201/"LReplace this instanceof check and cast with 'instanceof JSONArray jsonArray'(½»¯18ìÙÖŒŞ1

@@ -17,11 +17,8 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/consumer")
 public class MaskingController {
     private final ConsumerService consumerService;
-
     @Autowired
     public MaskingController(ConsumerService consumerService) {
         this.consumerService = consumerService;
     }
-
-
 }

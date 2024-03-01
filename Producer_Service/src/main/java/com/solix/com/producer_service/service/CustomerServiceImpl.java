@@ -16,8 +16,10 @@ import org.springframework.stereotype.Service;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Service
 public class CustomerServiceImpl implements CustomerService {
@@ -34,10 +36,15 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
+    public String addCustomer(Customer customer) {
+        this.customerRepository.save(customer);
+        return "Customer added successfully";
+    }
+
+    @Override
     public String sendTableDataToKafka() {
-        TableData tableData = getTableData();
         try {
-            String jsonTableData = objectMapper.writeValueAsString(tableData);
+            String jsonTableData = objectMapper.writeValueAsString(getTableData());
             kafkaTemplate.send("producerservice", jsonTableData);
             return "Table data sent successfully to Kafka topic";
         } catch (JsonProcessingException e) {
@@ -47,54 +54,24 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public String addCustomer(Customer customer) {
-        this.customerRepository.save(customer);
-        return "Customer added successfully";
-    }
-
-
-    @Override
     public TableData getTableData() {
         TableData tableData = new TableData();
         Class<?> entityClass = Customer.class;
-        Entity entityAnnotation = entityClass.getAnnotation(Entity.class);
-        if (entityAnnotation != null) {
-            Table tableAnnotation = entityClass.getAnnotation(Table.class);
-            if (tableAnnotation != null) {
-                String tableName = tableAnnotation.name();
-                String schema = tableAnnotation.schema();
-                tableData.setTableName(tableName);
-                tableData.setSchema(schema);
-            }
-            Field[] fields = entityClass.getDeclaredFields();
-            for (Field field : fields) {
-                Column columnAnnotation = field.getAnnotation(Column.class);
-                if (columnAnnotation != null) {
-                    String columnType = field.getType().getSimpleName();
-                    if (tableData.getDataTypes() == null) {
-                        tableData.setDataTypes(new ArrayList<>());
-                    }
-                    tableData.getDataTypes().add(columnType);
-                }
-            }
+        Table tableAnnotation = entityClass.getAnnotation(Table.class);
+        if (tableAnnotation != null) {
+            tableData.setTableName(tableAnnotation.name());
+            tableData.setSchema(tableAnnotation.schema());
         }
-        long currentTimeMillis = System.currentTimeMillis();
-        UUID uuid = UUID.randomUUID();
-        long uniqueId = Math.abs(uuid.getMostSignificantBits() + uuid.getLeastSignificantBits());
-        long runId = currentTimeMillis + uniqueId;
-        tableData.setRunId(runId);
-        List<Customer> records = findAllCustomerUsingSqlQuery();
-        tableData.setRecords(records);
+        tableData.setDataTypes(Arrays.stream(entityClass.getDeclaredFields())
+                .filter(field -> field.isAnnotationPresent(Column.class))
+                .map(field -> field.getType().getSimpleName())
+                .collect(Collectors.toList()));
+        tableData.setRunId(System.currentTimeMillis() + Math.abs(UUID.randomUUID().getMostSignificantBits() + UUID.randomUUID().getLeastSignificantBits()));
+        tableData.setRecords(findAllCustomerUsingSqlQuery());
         return tableData;
     }
 
-
     public List<Customer> findAllCustomerUsingSqlQuery() {
         return customerRepository.findAll();
-    }
-
-    @Override
-    public String addCustomers(List<Customer> customers) {
-        return null;
     }
 }

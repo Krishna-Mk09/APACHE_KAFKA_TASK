@@ -1,0 +1,7 @@
+
+o
+java:S6204D"RReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()'(ã¤£’8°ÐÿÜß1
+T
+java:S1128	"7Remove this unused import 'jakarta.persistence.Entity'.(…ÅÊÆ8ý€ˆÝß1
+M
+java:S1128"0Remove this unused import 'java.util.ArrayList'.(÷‰îƒ8ý€ˆÝß1

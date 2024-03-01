@@ -927,7 +927,3 @@ w
 G.idea/sonarlint/issuestore/e/c/ec426e277322895bab53b16280eb6c25d4c92052,6\7\679cd6472ec15f71932e4955ec76e1f71d7573f9
 ƒ
 SProducer_Service/src/main/java/com/solix/com/producer_service/domain/TableData.java,0\b\0b43d22922e35efa1ece4d331a8ce8d71ae3597a
-|
-LProducer_Service/src/main/java/com/solix/com/producer_service/service/d.java,6\c\6c62acc77953c2d1e5b77adc02e86ada3c4f1da2
-†
-VProducer_Service/src/main/java/com/solix/com/producer_service/service/DataService.java,d\d\ddca5a6950fb43387ec6f0c84202b9be9674f3f9

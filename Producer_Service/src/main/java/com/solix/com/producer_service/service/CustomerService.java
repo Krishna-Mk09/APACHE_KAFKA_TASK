@@ -11,11 +11,9 @@ import java.util.List;
  * Created With: IntelliJ IDEA Ultimate Edition
  */
 public interface CustomerService {
-    String addCustomers(List<Customer> customers);
+    String addCustomer(Customer customer);
 
     String sendTableDataToKafka();
-
-    String addCustomer(Customer customer);
 
     TableData getTableData();
 
