@@ -1,11 +1,8 @@
 package com.solix.com.producer_service.service;
 
 import com.solix.com.producer_service.domain.Customer;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import com.solix.com.producer_service.domain.TableData;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.util.List;
 
 /*
@@ -14,9 +11,13 @@ import java.util.List;
  * Created With: IntelliJ IDEA Ultimate Edition
  */
 public interface CustomerService {
-    public String addCustomers(List<Customer> customers);
+    String addCustomers(List<Customer> customers);
 
-    public String addCustomer(Customer customer);
+    String sendTableDataToKafka();
 
+    String addCustomer(Customer customer);
 
+    TableData getTableData();
+
+    List<Customer> findAllCustomerUsingSqlQuery();
 }

@@ -6,8 +6,8 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="Producer_Service" />
         <module name="Consumer_Service_One" />
+        <module name="Producer_Service" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
