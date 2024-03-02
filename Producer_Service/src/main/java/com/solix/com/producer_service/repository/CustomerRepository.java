@@ -6,7 +6,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-
 /*
  * Author Name : M.V.Krishna
  * Date: 17-02-2024

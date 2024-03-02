@@ -13,7 +13,6 @@ import lombok.NoArgsConstructor;
  * Date: 17-02-2024
  * Created With: IntelliJ IDEA Ultimate Edition
  */
-
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor

@@ -35,12 +35,24 @@ public class CustomerController {
         return new ResponseEntity(this.customerService.addCustomer(customer), HttpStatus.CREATED);
     }
 
+    /**
+     * Retrieves table data using a SQL query and returns it as an HTTP response.
+     * It retrieves table data using the {@code getTableData()} method from the {@code customerService}.
+     *
+     * @return ResponseEntity containing retrieved table data
+     */
     @GetMapping("/findAllUsingSqlQuery")
     public ResponseEntity<?> findAllUsingSqlQuery() {
         TableData tableData = customerService.getTableData();
         return new ResponseEntity<>(tableData, HttpStatus.OK);
     }
 
+    /**
+     * Sends table data to Kafka and returns the result as an HTTP response.
+     * It invokes the {@code sendTableDataToKafka()} method from the {@code customerService} to send the table data to Kafka.
+     *
+     * @return ResponseEntity containing the result of sending table data to Kafka
+     */
     @GetMapping("/sendTableDataToKafka")
     public ResponseEntity<?> sendTableDataToKafka() {
         String result = customerService.sendTableDataToKafka();

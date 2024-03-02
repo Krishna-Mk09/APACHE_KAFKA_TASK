@@ -13,10 +13,6 @@ ZProducer_Service/src/main/java/com/solix/com/Producer_Service/service/CustomerS
 ZProducer_Service/src/main/java/com/solix/com/Producer_Service/configuration/Constants.java,4\4\449861348c167852b71aaf076d9fc1a3d81f763e
 H
 Producer_Service/pom.xml,0\2\028b6c4a33bfce5b333ab110ac5796ea83554795
-ä
-ZConsumer_Service_One/src/main/java/com/solix/com/consumer_service_one/domain/Customer.java,9\a\9ae7ba8eda719e91be0bfbcedd8e74170b514c8d
-ò
-hConsumer_Service_One/src/main/java/com/solix/com/consumer_service_one/repository/CustomerRepository.java,6\5\65169dbc589657f0bd3d8b0cf3219cebde6e460b
 L
 Consumer_Service_One/pom.xml,1\d\1de950c30d3629c5494e1ecc9b3356c2061911f2
 î
@@ -337,8 +333,6 @@ bConsumer_Service_One/src/main/java/com/solix/com/consumer_service_one/service/C
 fConsumer_Service_One/src/main/java/com/solix/com/consumer_service_one/service/ConsumerServiceImpl.java,5\e\5e94d7bf2d03c0a5927c571c7badc529598e6274
 ó
 gConsumer_Service_One/src/main/java/com/solix/com/consumer_service_one/controller/MaskingController.java,e\a\ea832b8138abaed17f7219bf4fac79c7594830fc
-í
-bConsumer_Service_One/src/main/java/com/solix/com/consumer_service_one/service/ProducerService.java,e\7\e746ffe787f89bec7f79a8ad7d6e639fff78c7cf
 ï
 eConsumer_Service_One/src/main/java/com/solix/com/consumer_service_one/service/MaskedDataProducer.java,b\2\b22c103074b2333e1585494c3937ff85a00e121b
 Å
