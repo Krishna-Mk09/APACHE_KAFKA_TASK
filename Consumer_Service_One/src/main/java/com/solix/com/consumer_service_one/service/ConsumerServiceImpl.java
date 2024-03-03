@@ -38,6 +38,7 @@ public class ConsumerServiceImpl implements ConsumerService {
         logger.info("Modified JSON data: {}", rootNode);
         String modifiedJsonString = rootNode.toString();
         kafkaTemplate.send("updatedTopic", modifiedJsonString);
+        System.out.println("sent to updatedTopic ");
     }
 
     private void shuffleField(JsonNode recordNode, String fieldName) {
