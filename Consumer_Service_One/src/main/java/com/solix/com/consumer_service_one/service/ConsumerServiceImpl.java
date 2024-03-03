@@ -6,19 +6,29 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
+
 import java.util.Collections;
 import java.util.stream.Collectors;
 
 @Component
 @Service
 public class ConsumerServiceImpl implements ConsumerService {
-    private static  final Logger logger = LoggerFactory.getLogger(ConsumerServiceImpl.class);
+    private static final Logger logger = LoggerFactory.getLogger(ConsumerServiceImpl.class);
     private final ObjectMapper objectMapper = new ObjectMapper();
+    private final KafkaTemplate<String, String> kafkaTemplate;
+
+    @Autowired
+    public ConsumerServiceImpl(KafkaTemplate<String, String> kafkaTemplate) {
+        this.kafkaTemplate = kafkaTemplate;
+    }
+
     @Override
-    @KafkaListener(topics = "producerservice", groupId = "group_producer")
+    @KafkaListener(topics = "EmployeeProducer", groupId = "group_producer")
     public void listen(String jsonData) throws JsonProcessingException {
         JsonNode rootNode = objectMapper.readTree(jsonData);
         rootNode.get("records").forEach(recordNode -> {
@@ -26,6 +36,8 @@ public class ConsumerServiceImpl implements ConsumerService {
             shuffleField(recordNode, "password");
         });
         logger.info("Modified JSON data: {}", rootNode);
+        String modifiedJsonString = rootNode.toString();
+        kafkaTemplate.send("updatedTopic", modifiedJsonString);
     }
 
     private void shuffleField(JsonNode recordNode, String fieldName) {

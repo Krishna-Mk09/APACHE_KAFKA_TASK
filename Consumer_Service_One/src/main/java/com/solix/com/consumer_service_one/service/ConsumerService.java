@@ -13,6 +13,6 @@ import java.util.regex.Pattern;
  */
 public interface ConsumerService {
 
-    @KafkaListener(topics = "producerservice", groupId = "group_producer")
+    @KafkaListener(topics = "EmployeeProducer", groupId = "group_producer")
     void listen(String jsonData) throws JsonProcessingException;
 }

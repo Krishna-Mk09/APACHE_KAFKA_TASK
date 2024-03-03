@@ -45,7 +45,7 @@ public class CustomerServiceImpl implements CustomerService {
     public String sendTableDataToKafka() {
         try {
             String jsonTableData = objectMapper.writeValueAsString(getTableData());
-            kafkaTemplate.send("producerservice", jsonTableData);
+            kafkaTemplate.send("EmployeeProducer", jsonTableData);
             return "Table data sent successfully to Kafka topic";
         } catch (JsonProcessingException e) {
             log.error("Error serializing table data: {}", e.getMessage());

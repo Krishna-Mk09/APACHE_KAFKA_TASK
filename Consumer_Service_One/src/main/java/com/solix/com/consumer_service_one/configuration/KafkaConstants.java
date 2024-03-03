@@ -6,7 +6,8 @@ package com.solix.com.consumer_service_one.configuration;
  * Created With: IntelliJ IDEA Ultimate Edition
  */
 public class KafkaConstants {
-    public static final String TOPIC = "producerservice";
+    public static final String TOPIC = "EmployeeProducer";
+    public static final String TOPIC1 = "updatedTopic";
     public static final String GROUP_ID = "group_producer";
     public static final String HOST = "localhost:9095";
 }

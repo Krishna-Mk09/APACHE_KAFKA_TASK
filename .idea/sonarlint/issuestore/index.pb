@@ -317,14 +317,6 @@ G.idea/sonarlint/issuestore/0/2/028b6c4a33bfce5b333ab110ac5796ea83554795,d\f\df
 Q.idea/sonarlint/securityhotspotstore/0/2/028b6c4a33bfce5b333ab110ac5796ea83554795,6\2\625bdae20e75da69a2fe431698c9114f0dcafc67
 Å
 Q.idea/sonarlint/securityhotspotstore/4/4/449861348c167852b71aaf076d9fc1a3d81f763e,c\1\c1ba111190026abe09fa90dccaffeb345a5428e6
-w
-G.idea/sonarlint/issuestore/9/a/9ae7ba8eda719e91be0bfbcedd8e74170b514c8d,0\9\0977af7586258369be4d0de995649ac673d591b0
-Å
-Q.idea/sonarlint/securityhotspotstore/9/a/9ae7ba8eda719e91be0bfbcedd8e74170b514c8d,2\0\2008fcc7f47dbdf4b78b178470326279c7e1ce89
-Å
-Q.idea/sonarlint/securityhotspotstore/6/5/65169dbc589657f0bd3d8b0cf3219cebde6e460b,f\4\f499633c98477d46608bc40c07c093d236194a07
-w
-G.idea/sonarlint/issuestore/6/5/65169dbc589657f0bd3d8b0cf3219cebde6e460b,b\2\b2fea22d3c4440a0055d840e17943214cb2b7798
 K
 Producer_Service/.gitignore,8\4\84d97564a9b11200ac443e0148b46abcf9f032f7
 í
