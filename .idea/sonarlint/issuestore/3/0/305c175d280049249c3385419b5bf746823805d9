@@ -1,0 +1,4 @@
+
+“
+java:S1598"õThis file "ConsumerServiceImpl.java" should be located in "com\solix\com\consumer_service_two\service" directory, not in "C:\Users\mugal\IdeaProjects\APACHE_KAFKA_TASK\ConsumerService_Two\src\main\java\com\solix\com\consumerservice_two\service".(•­Üå8‡„°éà1
+L	java:S106"+Replace this use of System.out by a logger.(Äø‘ûÿÿÿÿ8Ÿ„°éà1
