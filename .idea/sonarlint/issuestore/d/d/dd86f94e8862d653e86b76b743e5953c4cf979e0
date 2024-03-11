@@ -1,7 +1,4 @@
 
 W
-java:S6213.":Rename this variable to not match a restricted identifier.(¯÷…8ºûı˜á1
-W
-java:S6213G":Rename this variable to not match a restricted identifier.(²¾Ï8ÍÁ´™á1
-q
-java:S1128"TRemove this unnecessary import: same package classes are always implicitly imported.(ÕÃÛ—8Şûı˜á1
+java:S6213"":Rename this variable to not match a restricted identifier.(¯÷…8£¦Ïãâ1
+X	java:S125:"<This block of commented-out lines of code should be removed.(óµ ­8«¦Ïãâ1

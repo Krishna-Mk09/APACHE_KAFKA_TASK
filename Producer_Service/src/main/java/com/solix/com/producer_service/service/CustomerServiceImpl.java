@@ -1,44 +1,32 @@
 package com.solix.com.producer_service.service;
 
+import com.solix.com.producer_service.configuration.Constants;
 import com.solix.com.producer_service.repository.CustomerRepositoryJdbcTemplate;
-import com.solix.com.producer_service.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
-import javax.sql.DataSource;
-import java.sql.Connection;
-import java.sql.DatabaseMetaData;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.*;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 
 @Service
 public class CustomerServiceImpl implements CustomerService {
 
     private final CustomerRepositoryJdbcTemplate customerRepositoryJdbcTemplate;
-    private final DataSource dataSource;
+    private final KafkaTemplate<String, String> kafkaTemplate; // Updated to KafkaTemplate<String, String>
 
     @Autowired
-    public CustomerServiceImpl(CustomerRepositoryJdbcTemplate customerRepositoryJdbcTemplate, DataSource dataSource) {
+    public CustomerServiceImpl(CustomerRepositoryJdbcTemplate customerRepositoryJdbcTemplate, KafkaTemplate<String, String> kafkaTemplate) {
         this.customerRepositoryJdbcTemplate = customerRepositoryJdbcTemplate;
-        this.dataSource = dataSource;
-    }
-
-
-
-    private String fetchSchemaName() {
-        try (Connection connection = dataSource.getConnection()) {
-            DatabaseMetaData metaData = connection.getMetaData();
-            return metaData.getUserName();
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return null;
-        }
+        this.kafkaTemplate = kafkaTemplate;
     }
 
     @Override
     public List<Map<String, Object>> getAllCustomers() {
         List<Map<String, Object>> result = new ArrayList<>();
-        String tableName = "customer"; // Change this to the actual table name
         String runId = String.valueOf(System.currentTimeMillis());
         List<Map<String, Object>> customers = customerRepositoryJdbcTemplate.findAll();
         List<Map<String, Object>> records = new ArrayList<>();
@@ -51,45 +39,24 @@ public class CustomerServiceImpl implements CustomerService {
             }
             records.add(record);
         }
-        List<String> dataTypes = fetchDataTypes(tableName, customers);
+        List<String> dataTypes = new ArrayList<>();
+        // Manually set data types for each column
+        dataTypes.add("VARCHAR");
+        dataTypes.add("INTEGER");
+        // Add more data types as per your table schema
+
+        String schemaName = "producers"; // Set your schema name here
+
         Map<String, Object> tableData = new LinkedHashMap<>();
         tableData.put("runId", runId);
-        tableData.put("tableName", tableName);
-        String schemaName = fetchSchemaName();
         tableData.put("schema", schemaName);
         tableData.put("dataTypes", dataTypes);
         tableData.put("records", records);
         result.add(tableData);
+
+        // Send data to Kafka topic
+        kafkaTemplate.send(Constants.Topic, "EmployeeProducers", "dataSent"); // Example: kafkaTemplate.send(Constants.Topic, "key123", "Hello Kafka!");
+
         return result;
     }
-
-    private List<String> fetchDataTypes(String tableName, List<Map<String, Object>> records) {
-        List<String> dataTypes = new ArrayList<>();
-        Set<String> columnNames = new HashSet<>();
-
-        // Extract column names from the records
-        for (Map<String, Object> record : records) {
-            columnNames.addAll(record.keySet());
-        }
-
-        try (Connection connection = dataSource.getConnection()) {
-            DatabaseMetaData metaData = connection.getMetaData();
-            ResultSet resultSet = metaData.getColumns(null, null, tableName, null);
-
-            while (resultSet.next()) {
-                String columnName = resultSet.getString("COLUMN_NAME");
-                String dataType = resultSet.getString("TYPE_NAME");
-
-                // Check if the column is present in the records
-                if (columnNames.contains(columnName)) {
-                    dataTypes.add(dataType);
-                }
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return dataTypes;
-    }
-
-
 }

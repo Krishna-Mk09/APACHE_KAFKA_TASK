@@ -29,16 +29,26 @@ public class ConsumerServiceImpl implements ConsumerService {
 
     @Override
     @KafkaListener(topics = "EmployeeProducer", groupId = "group_producer")
-    public void listen(String jsonData) throws JsonProcessingException {
-        JsonNode rootNode = objectMapper.readTree(jsonData);
-        rootNode.get("records").forEach(recordNode -> {
-            shuffleField(recordNode, "name");
-            shuffleField(recordNode, "password");
-        });
-        logger.info("Modified JSON data: {}", rootNode);
-        String modifiedJsonString = rootNode.toString();
-        kafkaTemplate.send("updatedTopic", modifiedJsonString);
-        System.out.println("sent to updatedTopic ");
+    public void listen(String jsonData) {
+        try {
+            JsonNode rootNode = objectMapper.readTree(jsonData);
+            if (rootNode.has("records")) {
+                rootNode.get("records").forEach(recordNode -> {
+                    shuffleField(recordNode, "name");
+                    shuffleField(recordNode, "password");
+                });
+                logger.info("Modified JSON data: {}", rootNode);
+                String modifiedJsonString = rootNode.toString();
+                kafkaTemplate.send("updatedTopic", modifiedJsonString);
+                System.out.println("Sent to updatedTopic");
+            } else {
+                logger.warn("Received JSON message without records: {}", jsonData);
+            }
+        } catch (JsonProcessingException e) {
+            logger.warn("Received non-JSON message: {}", jsonData);
+            // Handle non-JSON messages gracefully
+            // Perform any necessary action for non-JSON messages
+        }
     }
 
     private void shuffleField(JsonNode recordNode, String fieldName) {
