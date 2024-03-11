@@ -1,7 +1,7 @@
 
-o
-java:S6204D"RReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()'(ã¤£’8°ĞÿÜß1
-T
-java:S1128	"7Remove this unused import 'jakarta.persistence.Entity'.(…ÅÊÆ8ı€ˆİß1
-M
-java:S1128"0Remove this unused import 'java.util.ArrayList'.(÷‰îƒ8ı€ˆİß1
+W
+java:S6213.":Rename this variable to not match a restricted identifier.(¯÷…8ºûı˜á1
+W
+java:S6213G":Rename this variable to not match a restricted identifier.(²¾Ï8ÍÁ´™á1
+q
+java:S1128"TRemove this unnecessary import: same package classes are always implicitly imported.(ÕÃÛ—8Şûı˜á1

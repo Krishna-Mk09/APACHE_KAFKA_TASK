@@ -1,9 +1,6 @@
 package com.solix.com.producer_service.service;
-
-import com.solix.com.producer_service.domain.Customer;
-import com.solix.com.producer_service.domain.TableData;
-
 import java.util.List;
+import java.util.Map;
 
 /*
  * Author Name : M.V.Krishna
@@ -11,11 +8,13 @@ import java.util.List;
  * Created With: IntelliJ IDEA Ultimate Edition
  */
 public interface CustomerService {
-    String addCustomer(Customer customer);
+//    String addCustomer(Customer customer);
+//
+//    String sendTableDataToKafka();
+//
+//    TableData getTableData();
+//
+//    List<Customer> findAllCustomerUsingSqlQuery();
 
-    String sendTableDataToKafka();
-
-    TableData getTableData();
-
-    List<Customer> findAllCustomerUsingSqlQuery();
+    List<Map<String, Object>> getAllCustomers();
 }
