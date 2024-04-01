@@ -12,11 +12,16 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+/*
+ * Author Name : M.V.Krishna
+ * Date: 17-02-2024
+ * Created With: IntelliJ IDEA Ultimate Edition
+ */
 @Service
 public class CustomerServiceImpl implements CustomerService {
 
     private final CustomerRepositoryJdbcTemplate customerRepositoryJdbcTemplate;
-    private final KafkaTemplate<String, String> kafkaTemplate; // Updated to KafkaTemplate<String, String>
+    private final KafkaTemplate<String, String> kafkaTemplate;
 
     @Autowired
     public CustomerServiceImpl(CustomerRepositoryJdbcTemplate customerRepositoryJdbcTemplate, KafkaTemplate<String, String> kafkaTemplate) {
@@ -40,12 +45,9 @@ public class CustomerServiceImpl implements CustomerService {
             records.add(record);
         }
         List<String> dataTypes = new ArrayList<>();
-        // Manually set data types for each column
         dataTypes.add("VARCHAR");
         dataTypes.add("INTEGER");
-        // Add more data types as per your table schema
-
-        String schemaName = "producers"; // Set your schema name here
+        String schemaName = "producers";
 
         Map<String, Object> tableData = new LinkedHashMap<>();
         tableData.put("runId", runId);
@@ -53,10 +55,8 @@ public class CustomerServiceImpl implements CustomerService {
         tableData.put("dataTypes", dataTypes);
         tableData.put("records", records);
         result.add(tableData);
-
-        // Send data to Kafka topic
-        kafkaTemplate.send(Constants.Topic, "EmployeeProducers", "dataSent"); // Example: kafkaTemplate.send(Constants.Topic, "key123", "Hello Kafka!");
-
+        kafkaTemplate.send(Constants.Topic, "EmployeeProducers", "dataSent");
+        System.out.println("sent data to EmployeeProducers !!!");
         return result;
     }
 }

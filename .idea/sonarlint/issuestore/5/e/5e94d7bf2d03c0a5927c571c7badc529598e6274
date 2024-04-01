@@ -1,2 +1,3 @@
 
-L	java:S106+"+Replace this use of System.out by a logger.(öÊÇíøÿÿÿÿ8‘¥êåâ1
+N
+java:S1602'",Remove useless curly braces around statement(Ì£Òıÿÿÿÿ8ì½À½é1

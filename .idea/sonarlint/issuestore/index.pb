@@ -1,6 +1,4 @@
 
-‚
-RProducer_Service/src/main/java/com/solix/com/Producer_Service/domain/Customer.java,6\2\62bd412721d7879d06fd27fe8e25caf9df6f26c2
 Š
 ZProducer_Service/src/main/java/com/solix/com/Producer_Service/service/CustomerService.java,a\1\a19162f8f8531c3e4007249ed5b82c7ed1e4e0d8
 Ž
@@ -15,8 +13,6 @@ L
 Consumer_Service_One/pom.xml,1\d\1de950c30d3629c5494e1ecc9b3356c2061911f2
 ”
 dProducer_Service/src/main/java/com/solix/com/Producer_Service/configuration/KafkaProducerConfig.java,2\9\298543f8b9642d1e12b467fdf42295edd37acf0f
-‚
-RProducer_Service/src/main/java/com/solix/com/producer_service/domain/Customer.java,5\d\5da0c2a74ea596137b53e3739a0cccad76f5b97c
 —
 gConsumer_Service_One/src/main/java/com/solix/com/consumer_service_one/configuration/KafkaConstants.java,6\b\6bf5d09feadc2e9a0c31cf4bea2181c2e92082ca
 ”
@@ -879,8 +875,6 @@ w
 G.idea/sonarlint/issuestore/1/d/1d7cba92fac9034909ae25694591119b4b19595c,7\9\7939d48228d9ec83686fd812f4085e64be06bd1d
 w
 G.idea/sonarlint/issuestore/e/c/ec426e277322895bab53b16280eb6c25d4c92052,6\7\679cd6472ec15f71932e4955ec76e1f71d7573f9
-ƒ
-SProducer_Service/src/main/java/com/solix/com/producer_service/domain/TableData.java,0\b\0b43d22922e35efa1ece4d331a8ce8d71ae3597a
 K
 ConsumerService_Two/HELP.md,0\5\055b27505f548891cc87370b4e8890c90a6e4c68
 •

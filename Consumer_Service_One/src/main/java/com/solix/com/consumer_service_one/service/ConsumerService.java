@@ -4,6 +4,8 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import org.springframework.kafka.annotation.KafkaListener;
 
+import java.math.BigDecimal;
+import java.sql.Date;
 import java.util.regex.Pattern;
 
 /*
@@ -14,5 +16,7 @@ import java.util.regex.Pattern;
 public interface ConsumerService {
 
     @KafkaListener(topics = "EmployeeProducer", groupId = "group_producer")
-    void listen(String jsonData) throws JsonProcessingException;
+    void listen(String jsonData, String keyToMask);
+
+    String encrypt(final String column) throws Exception;
 }

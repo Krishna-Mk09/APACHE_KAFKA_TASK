@@ -1,5 +1,12 @@
 
+a	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(’€©U8Èù»é1
+q
+java:S1128"ORemove this unused import 'com.fasterxml.jackson.core.JsonProcessingException'.(ßÔïÇûÿÿÿÿ8œÎù»é1
 a
 java:S1128"DRemove this unused import 'com.fasterxml.jackson.databind.JsonNode'.(–×ª8â‡ãŒŞ1
+N
+java:S1128"1Remove this unused import 'java.math.BigDecimal'.(êêŠ8´¿ú»é1
+G
+java:S1128"*Remove this unused import 'java.sql.Date'.(ÙÀ½Ê8´¿ú»é1
 V
-java:S1128"4Remove this unused import 'java.util.regex.Pattern'.(Ã•…Äúÿÿÿÿ8’âÛß1
+java:S1128	"4Remove this unused import 'java.util.regex.Pattern'.(Ã•…Äúÿÿÿÿ8’âÛß1

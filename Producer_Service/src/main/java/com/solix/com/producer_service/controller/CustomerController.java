@@ -15,6 +15,11 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 import java.util.Map;
 
+/*
+ * Author Name : M.V.Krishna
+ * Date: 17-02-2024
+ * Created With: IntelliJ IDEA Ultimate Edition
+ */
 @RestController
 @RequestMapping("/customers")
 public class CustomerController {
@@ -30,14 +35,12 @@ public class CustomerController {
     @GetMapping("/getAll")
     public ResponseEntity<List<Map<String, Object>>> getAllCustomers() {
         List<Map<String, Object>> customers = customerService.getAllCustomers();
-        // Send data to Kafka topic
         ObjectMapper objectMapper = new ObjectMapper();
         for (Map<String, Object> customer : customers) {
             try {
                 String customerJson = objectMapper.writeValueAsString(customer);
                 kafkaTemplate.send(Constants.Topic, customerJson);
             } catch (JsonProcessingException e) {
-                // Handle the exception if unable to serialize to JSON
                 e.printStackTrace();
             }
         }
